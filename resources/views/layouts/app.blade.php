@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="/css/responsive.css">
 
     <!-- =========== fav-icon =========== -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="/images/favicon.png">
 
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.html">
     <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.html">
@@ -60,7 +60,7 @@
                       <div class="col-lg-3 col-12">
                         <div class="logo navbar-header float-none-sm">
                           <a class="navbar-brand page-scroll" href="/">
-                            <img alt="TravelRide" src="images/logo.png">
+                            <img alt="TravelRide" src="/images/logo.png">
                           </a>
                         </div>
                       </div>
@@ -175,7 +175,7 @@
                   <div class="footer-static-block">
                     <div class="f-logo mb-30 mb-sm-15">
                       <a href="/" class="">
-                        <img src="images/footer-logo.png" alt="MyTravelExplorer">
+                        <img src="/images/footer-logo.png" alt="MyTravelExplorer">
                       </a>
                     </div>
                     <div class="footer-about mb-sm-30">

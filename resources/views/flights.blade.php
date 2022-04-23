@@ -30,7 +30,7 @@
                   <div class="row align-items-end justify-content-center">
                     <div class="form-group col-xl-3 col-md-6 col-12">
                       <div class="input-inner mb-3 mb-xl-0">
-                        <label>Search for flights</label>
+                        <label>Search for Hotels</label>
                         <div class="input-box">
                             <div class="input-icon">
                                 <span><i class="fas fa-map-marker-alt"></i></span>
@@ -125,12 +125,12 @@
       <section class="bread bread-banner">
         <div class="container">
           <div class="bread-detail text-center d-md-flex align-items-center justify-content-between">
-            <h4 class="bread-title mb-3 mb-md-0">Flight List</h4>
+            <h4 class="bread-title mb-3 mb-md-0">Hotel List</h4>
             <div class="bread-crumb">
               <ul>
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Flights</a></li>
-                <li class="breadcrumb-item active"><a href="#">Flight List</a></li>
+                <li class="breadcrumb-item"><a href="#">Hotels</a></li>
+                <li class="breadcrumb-item active"><a href="#">Hotel List</a></li>
               </ul>
             </div>
           </div>
@@ -203,17 +203,19 @@
               <div class="product-listing hotel-part list-type">
                 <div class="inner-listing">
                   <div class="row">
+
+                  @forelse ($flights->PricedItineraries as $h)
                     <div class="col-md-6 col-12 item-width mb-30">
                       <div class="product-item box-shadow card packages-box overflow-hidden">
                         <figure>
                           <div class="package-img position-relative">
                             <a href="#">
-                              <img alt="Travelexplorer" src="images/categories/hotels/hotel_1.jpg">
+                              <img alt="Travelexplorer" src="http://rest.resvoyage.com/{{$h->AirItinerary->OriginDestinationOptions[0]->FlightSegments[0]->AirlineLogo}}">
                               <div class="effect"></div>
                             </a>
                             <div class="price-box position-absolute mt-2">
                               <div class=" d-flex align-items-center">
-                                <div class="price mb-0">$89</div>
+                                <div class="price mb-0"></div>
                                 <div class="price-text mb-0 ml-2"></div>
                               </div>
                             </div>
@@ -221,19 +223,20 @@
                           <figcaption>
                             <div class="card-body p-25 p-xs-15">
                               <div class="packages-details">
-                                <h4><a href="hotel_detail.html" class="title">Airline name goes here (fetch from api)</a></h4>
+                                 <h4><a href="hotel_detail.html" class="title">{{$h->AirItinerary->OriginDestinationOptions[0]->FlightSegments[0]->MarketingAirlineName}} </a></h4>
+
                                 <div class="mt-2">
                                   <ul>
                                     <li>
-                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>05H 45m and 2 stop</div>
+                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{$h->AirItinerary->OriginDestinationOptions[0]->SectorSequence}} stop </div>
                                     </li>
                                   </ul>
                                 </div>
-                                <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
+                                <p class="my-2"></p>
 
                                 <div class="hotel-features mb-0 mt-2 ">
                                   <div class="room-facilities mb-1">
-                                    <span> Facilities</span>
+                                    <span> {{$h->AirItineraryPricingInfo->TotalPrice}} {{$h->AirItinerary->OriginDestinationOptions[0]->JourneyTotalDuration}} </span>
                                   </div>
                                   <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Get Directions">
                                     <i class="fa fa-map-signs d-inline-block text-warning"></i>
@@ -260,6 +263,7 @@
                         </figure>
                       </div>
                     </div>
+                    @empty
                     <div class="col-md-6 col-12 item-width mb-30">
                       <div class="product-item box-shadow card packages-box overflow-hidden">
                         <figure>
@@ -321,250 +325,7 @@
                         </figure>
                       </div>
                     </div>
-                    <div class="col-md-6 col-12 item-width mb-30">
-                      <div class="product-item box-shadow card packages-box overflow-hidden">
-                        <figure>
-                          <div class="package-img position-relative">
-                            <a href="hotel_detail.html">
-                              <img alt="TravelRide" src="images/categories/hotels/hotel_3.jpg">
-                              <div class="effect"></div>
-                            </a>
-                            <div class="price-box position-absolute mt-2">
-                              <div class=" d-flex align-items-center">
-                                <div class="price mb-0">$89</div>
-                                <div class="price-text mb-0 ml-2">/ Night</div>
-                              </div>
-                            </div>
-                          </div>
-                          <figcaption>
-                            <div class="card-body p-25 p-xs-15">
-                              <div class="packages-details">
-                                <h4><a href="hotel_detail.html" class="title">Hyatt Regency Maui Resort & Spa</a></h4>
-                                <div class="mt-2">
-                                  <ul>
-                                    <li>
-                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> 124 E Huron St, New york</div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
-                                <div class="rating-summary-block">
-                                  <div class="rating-result" title="70%"> <span style="width:66%"></span> </div>
-                                  <span class="label-review">10 Reviews</span>
-                                </div>
-                                <div class="hotel-features mb-0 mt-2 ">
-                                  <div class="room-facilities mb-1">
-                                    <span>Room Facilities</span>
-                                  </div>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Get Directions">
-                                    <i class="fa fa-map-signs d-inline-block text-warning"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="5 Star Hotel">
-                                    <i class="fa fa-h-square d-inline-block text-secondary"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Wifi">
-                                    <i class="fa fa-wifi d-inline-block text-success"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shower Bathroom">
-                                    <i class="fa fa-shower d-inline-block text-info"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Food">
-                                    <i class="fas fa-utensils d-inline-block text-blue"></i>
-                                  </a>
-                                </div>
-                                <div class="packages-btn mt-30 mt-xs-20">
-                                  <a class="btn btn-color mr-3" href="hotel_booking.html">Book Now</a>
-                                  <a class="btn btn-light" href="hotel_detail.html">View Detail</a>
-                                </div>
-                              </div>
-                            </div>
-                          </figcaption>
-                        </figure>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-12 item-width mb-30">
-                      <div class="product-item box-shadow card packages-box overflow-hidden">
-                        <figure>
-                          <div class="package-img position-relative">
-                            <a href="hotel_detail.html">
-                              <img alt="TravelRide" src="images/categories/hotels/hotel_4.jpg">
-                              <div class="effect"></div>
-                            </a>
-                            <div class="price-box position-absolute mt-2">
-                              <div class=" d-flex align-items-center">
-                                <div class="price mb-0">$89</div>
-                                <div class="price-text mb-0 ml-2">/ Night</div>
-                              </div>
-                            </div>
-                          </div>
-                          <figcaption>
-                            <div class="card-body p-25 p-xs-15">
-                              <div class="packages-details">
-                                <h4><a href="hotel_detail.html" class="title">Ibis Styles London Heathrow</a></h4>
-                                <div class="mt-2">
-                                  <ul>
-                                    <li>
-                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> 124 E Huron St, Chicago</div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
-                                <div class="rating-summary-block">
-                                  <div class="rating-result" title="70%"> <span style="width:66%"></span> </div>
-                                  <span class="label-review">10 Reviews</span>
-                                </div>
-                                <div class="hotel-features mb-0 mt-2 ">
-                                  <div class="room-facilities mb-1">
-                                    <span>Room Facilities</span>
-                                  </div>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Get Directions">
-                                    <i class="fa fa-map-signs d-inline-block text-warning"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="5 Star Hotel">
-                                    <i class="fa fa-h-square d-inline-block text-secondary"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Wifi">
-                                    <i class="fa fa-wifi d-inline-block text-success"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shower Bathroom">
-                                    <i class="fa fa-shower d-inline-block text-info"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Food">
-                                    <i class="fas fa-utensils d-inline-block text-blue"></i>
-                                  </a>
-                                </div>
-                                <div class="packages-btn mt-30 mt-xs-20">
-                                  <a class="btn btn-color mr-3" href="hotel_booking.html">Book Now</a>
-                                  <a class="btn btn-light" href="hotel_detail.html">View Detail</a>
-                                </div>
-                              </div>
-                            </div>
-                          </figcaption>
-                        </figure>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-12 item-width mb-30">
-                      <div class="product-item box-shadow card packages-box overflow-hidden">
-                        <figure>
-                          <div class="package-img position-relative">
-                            <a href="hotel_detail.html">
-                              <img alt="TravelRide" src="images/categories/hotels/hotel_5.jpg">
-                              <div class="effect"></div>
-                            </a>
-                            <div class="price-box position-absolute mt-2">
-                              <div class=" d-flex align-items-center">
-                                <div class="price mb-0">$89</div>
-                                <div class="price-text mb-0 ml-2">/ Night</div>
-                              </div>
-                            </div>
-                          </div>
-                          <figcaption>
-                            <div class="card-body p-25 p-xs-15">
-                              <div class="packages-details">
-                                <h4><a href="hotel_detail.html" class="title">Hotel Europe Saint Severin Paris</a></h4>
-                                <div class="mt-2">
-                                  <ul>
-                                    <li>
-                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span> 38-40 Rue Saint Séverin, Paris, Paris</div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
-                                <div class="rating-summary-block">
-                                  <div class="rating-result" title="70%"> <span style="width:66%"></span> </div>
-                                  <span class="label-review">10 Reviews</span>
-                                </div>
-                                <div class="hotel-features mb-0 mt-2 ">
-                                  <div class="room-facilities mb-1">
-                                    <span>Room Facilities</span>
-                                  </div>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Get Directions">
-                                    <i class="fa fa-map-signs d-inline-block text-warning"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="5 Star Hotel">
-                                    <i class="fa fa-h-square d-inline-block text-secondary"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Wifi">
-                                    <i class="fa fa-wifi d-inline-block text-success"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shower Bathroom">
-                                    <i class="fa fa-shower d-inline-block text-info"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Food">
-                                    <i class="fas fa-utensils d-inline-block text-blue"></i>
-                                  </a>
-                                </div>
-                                <div class="packages-btn mt-30 mt-xs-20">
-                                  <a class="btn btn-color mr-3" href="hotel_booking.html">Book Now</a>
-                                  <a class="btn btn-light" href="hotel_detail.html">View Detail</a>
-                                </div>
-                              </div>
-                            </div>
-                          </figcaption>
-                        </figure>
-                      </div>
-                    </div>
-                    <div class="col-md-6 col-12 item-width mb-30">
-                      <div class="product-item box-shadow card packages-box overflow-hidden">
-                        <figure>
-                          <div class="package-img position-relative">
-                            <a href="hotel_detail.html">
-                              <img alt="TravelRide" src="images/categories/hotels/hotel_6.jpg">
-                              <div class="effect"></div>
-                            </a>
-                            <div class="price-box position-absolute mt-2">
-                              <div class=" d-flex align-items-center">
-                                <div class="price mb-0">$89</div>
-                                <div class="price-text mb-0 ml-2">/ Night</div>
-                              </div>
-                            </div>
-                          </div>
-                          <figcaption>
-                            <div class="card-body p-25 p-xs-15">
-                              <div class="packages-details">
-                                <h4><a href="hotel_detail.html" class="title">Four Seasons Resort Maui at Wailea</a></h4>
-                                <div class="mt-2">
-                                  <ul>
-                                    <li>
-                                      <div class="places"><span class="icon"><i class="fas fa-map-marker-alt"></i></span>3900 Wailea Alanui Drive, Kihei, HI</div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p class="my-2">It is a long established fact that a reader will be distracted by the readable content of a page when looking</p>
-                                <div class="rating-summary-block">
-                                  <div class="rating-result" title="70%"> <span style="width:66%"></span> </div>
-                                  <span class="label-review">10 Reviews</span>
-                                </div>
-                                <div class="hotel-features mb-0 mt-2 ">
-                                  <div class="room-facilities mb-1">
-                                    <span>Room Facilities</span>
-                                  </div>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Get Directions">
-                                    <i class="fa fa-map-signs d-inline-block text-warning"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="5 Star Hotel">
-                                    <i class="fa fa-h-square d-inline-block text-secondary"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Wifi">
-                                    <i class="fa fa-wifi d-inline-block text-success"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Shower Bathroom">
-                                    <i class="fa fa-shower d-inline-block text-info"></i>
-                                  </a>
-                                  <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Free Food">
-                                    <i class="fas fa-utensils d-inline-block text-blue"></i>
-                                  </a>
-                                </div>
-                                <div class="packages-btn mt-30 mt-xs-20">
-                                  <a class="btn btn-color mr-3" href="hotel_booking.html">Book Now</a>
-                                  <a class="btn btn-light" href="hotel_detail.html">View Detail</a>
-                                </div>
-                              </div>
-                            </div>
-                          </figcaption>
-                        </figure>
-                      </div>
-                    </div>
+                  @endforelse
                   </div>
                   <hr>
                   <div class="d-md-flex align-items-center justify-content-between pt-30 text-center">
@@ -632,7 +393,7 @@
                   </div>
                   <div class="sidebar-box room-type"> <span class="opener plus"></span>
                     <div class="sidebar-title">
-                      <h3><span>Flight Stops</span></h3>
+                      <h3><span>Hotel </span></h3>
                     </div>
                     <div class="sidebar-contant pt-3">
                       <div class="filter-checkboxs">

@@ -45,16 +45,17 @@
                   <div class="tab-content" id="tab_content">
 
                     <div class="tab-pane" id="hotel" role="tabpanel" aria-labelledby="hotel_tab">
-                      <form class="main-form" action="#">
+                      <form class="main-form" method="GET" action="/hotels">
+                      {{ csrf_field() }}
                         <div class="row align-items-end justify-content-center">
                           <div class="form-group col-xl-3 col-md-6 col-12">
                             <div class="input-inner mb-3 mb-xl-0">
-                              <label>Search for Hotels</label>
+                              <label>Going to ?</label>
                               <div class="input-box">
                                 <div class="input-icon">
                                   <span><i class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input id="hotel-destinationss" class="form-control" type="text" required placeholder="Search for Hotels">
+                                <input id="hotel-destinationss" name="city_name" class="form-control" type="text" required placeholder="City">
                               </div>
                             </div>
                           </div>
@@ -241,7 +242,7 @@
                             </form>
                           </div>
                           <div class="tab-pane fade" id="round_trip" role="tabpanel" aria-labelledby="round_trip_tab">
-                            <form class="main-form" action="#">
+                            <form class="main-form" method="GET" action="flights">
                               <div class="row align-items-end justify-content-center">
                                 <div class="form-group col-lg-4 col-sm-6 col-12">
                                   <div class="input-inner mb-3">

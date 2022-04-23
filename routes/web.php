@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,9 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/flights', function () {
-    return view('flights');
-});
-Route::get('/hotels', function () {
-    return view('hotels');
-});
+// Route::get('/flights', function () {
+//     return view('flights');
+// });
+Route::get('/hotels', [App\Http\Controllers\Controller::class, 'fetch_hotels'])->name('fetch_hotels');
+Route::get('/flights', [App\Http\Controllers\Controller::class, 'fetch_air'])->name('fetch_air');
+Route::get('/hotel_details', [App\Http\Controllers\Controller::class, 'hotel_details'])->name('hotel_details');
