@@ -13,26 +13,26 @@
 @import url("select2.min.css");
 @import url("scrolling-nav.css");
 
-/* 
+/*
 ================================================
 [  BASIC STYLE START ]
 ================================================
 
 01. Google Fonts
 02. General Style
-03. Headings Style 
+03. Headings Style
 04. Button Style
 05. Form Style
 06. Nav Tabs Style
 07. Spacing Style
 08. custom row and col Style
-09. back-to-top Arrow 
+09. back-to-top Arrow
 
 ======================================
 [  BASIC STYLE END ]
 ======================================
-      
-* HEADER 
+
+* HEADER
   - Header Style
   - Navigation Menu Style
   - Megamenu Style
@@ -541,7 +541,7 @@ _______________________________________________________*/
   }
   .btn-border {
     color: #3f3f3f;
-    padding: 10px 15px; 
+    padding: 10px 15px;
     border: 1px solid #e1e1e1;
   }
   .btn-border:hover {
@@ -601,7 +601,7 @@ _______________________________________________________*/
             border-radius: 5px;
   }
   input::placeholder, .main-form input::placeholder, .main-form textarea::placeholder, .main-form select::placeholder {
-    color: #5d646d !important;
+    color: #ffffff !important;
   }
   .main-form textarea{padding-top: 5px;}
   .main-form input:focus, .main-form textarea:focus, .main-form select:focus {
@@ -628,8 +628,8 @@ _______________________________________________________*/
   }
 
   /*------- select2 Css Start ---------*/
-  .select2-container { 
-    display: block; 
+  .select2-container {
+    display: block;
     max-width: 100%;
   }
   .select2-container .select2-selection--single {
@@ -800,7 +800,7 @@ _______________________________________________________*/
               border-radius: 5px;
   }
   .radio-button + label::before {
-    margin-top: 6px; 
+    margin-top: 6px;
   }
   .checkbox:checked + label::after {
       background-image: url("../images/check-box-icon.png");
@@ -847,7 +847,7 @@ _______________________________________________________*/
   .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     border: none;
     background: #ef6c00;
-    color: #fff;
+    color: rgb(102, 20, 20);
   }
 /**************************
     Nav Tabs End
@@ -934,7 +934,7 @@ _______________________________________________________*/
     .mt-60 { margin-top: 60px; }
 
 
-    /*----- Margin bottom -----*/ 
+    /*----- Margin bottom -----*/
     .mb-10 { margin-bottom: 10px; }
     .mb-15 { margin-bottom: 15px; }
     .mb-20 { margin-bottom: 20px; }
@@ -1017,7 +1017,7 @@ _______________________________________________________*/
          -o-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
   }
-/******************************** 
+/********************************
     back-to-top Arrow End
 *********************************/
 .spinner {
@@ -1029,7 +1029,7 @@ _______________________________________________________*/
       -ms-transform: translateX(-50%) translateY(-50%);
        -o-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
-}    
+}
 .triple-spinner {
   display: block;
   position: relative;
@@ -1266,7 +1266,7 @@ header#header select {
 	     -o-transition: all 0.4s ease 0s;
 	        transition: all 0.4s ease 0s;
 }
-.navbar-collapse ul.nav > li > a:hover::before, 
+.navbar-collapse ul.nav > li > a:hover::before,
 .navbar-collapse ul.nav > li > a.active::before {
   opacity: 1;
   transform: scale3d(1, 1, 1);
@@ -1284,7 +1284,7 @@ header#header select {
 /*----- Megamenu Style -----*/
 .megamenu {
   background: #ffffff;
-  color: #a4a4a4; 
+  color: #a4a4a4;
   padding: 0;
   text-align: left;
   position: absolute;
@@ -1334,6 +1334,9 @@ header#header select {
 	left: 15px;
 	top: 0;
 	display: none;
+}
+.label-text {
+  color: #ffffff;
 }
 
 /*_______________________________________________________
@@ -1439,7 +1442,7 @@ _______________________________________________________*/
 }
 .tour-search  .nav-tabs .nav-link.btn::after { display: none; }
 .tour-search .nav-tabs .nav-item.show .nav-link, .tour-search .nav-tabs .nav-link.active {
-  background: #fff;
+  background: rgb(255, 255, 255);
   color: #ef6c00;
   -webkit-border-radius : 5px 5px 0 0;
      -moz-border-radius : 5px 5px 0 0;
@@ -1447,7 +1450,7 @@ _______________________________________________________*/
           border-radius : 5px 5px 0 0;
 }
 .tour-wrapper .search-form-wrapper {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.5);
   padding: 25px;
   -webkit-box-shadow: 0 2px 13px rgba(0, 0, 0, 0.10);
      -moz-box-shadow: 0 2px 13px rgba(0, 0, 0, 0.10);
@@ -1477,7 +1480,7 @@ _______________________________________________________*/
 .tour-search .section-tab-2 .nav-tabs { margin-left: 0; }
 .section-tab-2 .nav-tabs .nav-item { margin-right: 20px; }
 .section-tab-2 .nav-tabs .nav-link {
-  color: #0d233e;
+  color: #ffffff;
   text-align: left;
   background-color: transparent;
   padding: 0 0 0 20px;
@@ -1872,8 +1875,8 @@ _______________________________________________________*/
        -o-border-radius: 50%;
           border-radius: 50%;
 }
-.price-box .price { 
-  font-size: 25px; 
+.price-box .price {
+  font-size: 25px;
   font-weight: 700;
   color: #ef6c00;
 }
@@ -2028,12 +2031,12 @@ _______________________________________________________*/
 }
 /*---------- parallax CSS End -------------*/
 
-/*----------  Our Destinations CSS Start  ---------*/  
+/*----------  Our Destinations CSS Start  ---------*/
 .destinations-part .nav-tabs {
   border-bottom: none;
   padding-bottom: 0;
   display: inline-block;
-} 
+}
 .desti-item {
   background: #6b6b6b;
   overflow: hidden;
@@ -2201,7 +2204,7 @@ _______________________________________________________*/
     max-width: 670px;
     position: relative;
 }
-.client-slider.owl-carousel .owl-nav button[class*="owl-"], 
+.client-slider.owl-carousel .owl-nav button[class*="owl-"],
 .client-slider.owl-carousel .owl-nav button[class*="owl-"].disabled:hover { background: transparent !important; }
 .client-slider.owl-carousel .owl-nav button[class*="owl-"]:hover { background: transparent !important; }
 .client-slider.owl-carousel .owl-nav button.owl-next { right: 0; }
@@ -2225,7 +2228,7 @@ _______________________________________________________*/
 /*----------- Tranportation Facilities CSS End --------------*/
 
 /*----------- Special Tours CSS Start --------------*/
-.special-tours .tour-info ul li { margin-bottom: 0; } 
+.special-tours .tour-info ul li { margin-bottom: 0; }
 .special-tours .price-box ul li { font-weight: 500; }
 .special-tours .rating-summary-block { margin-bottom: 10px; }
 .advisor-detail .avatar { width: auto !important; }
@@ -2256,7 +2259,7 @@ _______________________________________________________*/
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
-  }  
+  }
   .sidebar-title h3 {
     font-size: 18px;
     font-weight: 500;
@@ -2301,7 +2304,7 @@ _______________________________________________________*/
     padding-left: 20px;
     margin-bottom: 5px;
     width: 100%;
-    cursor: pointer; 
+    cursor: pointer;
   }
   .side-categories .categorie-title.collapsed { color: #666666; }
   .side-categories .categorie-title.collapsed:hover { color: #ef6c00; }
@@ -2311,11 +2314,11 @@ _______________________________________________________*/
     margin-left: 5px;
   }
   .accordion .categorie-title:before {
-    font-family: "Font Awesome 5 Free";  
+    font-family: "Font Awesome 5 Free";
     content: "\f105";
     position: absolute;
     left: 5px;
-    top: 0; 
+    top: 0;
     font-size: 14px;
     font-weight: 900;
     margin-right: 10px;
@@ -2336,7 +2339,7 @@ _______________________________________________________*/
        -moz-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
          -o-transform: rotate(0deg);
-            transform: rotate(0deg); 
+            transform: rotate(0deg);
   }
   .accordion.side-categories .collapse.show { padding-bottom: 0; }
   ul.sub-cate li { border-left: 2px solid #e1e1e1; }
@@ -2357,14 +2360,14 @@ _______________________________________________________*/
   /*----Sidebar categorie CSS End ---*/
 
   /*----Sidebar list-catergory CSS End ---*/
-  .list-catergory ul li { 
+  .list-catergory ul li {
     border-bottom: 1px solid #2318b3;
-    padding: 10px 0 10px 0; 
+    padding: 10px 0 10px 0;
   }
   .list-catergory ul li:first-child { padding-top: 0; }
-  .list-catergory ul li:last-child { 
+  .list-catergory ul li:last-child {
     border-bottom: none;
-    padding-bottom: 0; 
+    padding-bottom: 0;
   }
   .list-catergory ul li a {
     padding-left: 20px;
@@ -2392,14 +2395,14 @@ _______________________________________________________*/
   /*----Sidebar list-catergory CSS End ---*/
 
   /*----Sidebar listing-archive CSS End ---*/
-  .listing-archive ul li { 
+  .listing-archive ul li {
     border-bottom: 1px solid #e1e1e1;
-    padding: 10px 0 10px 0; 
+    padding: 10px 0 10px 0;
   }
   .listing-archive ul li:first-child { padding-top: 0; }
-  .listing-archive ul li:last-child { 
+  .listing-archive ul li:last-child {
     border-bottom: none;
-    padding-bottom: 0; 
+    padding-bottom: 0;
   }
   .listing-archive ul li a {
     padding-left: 20px;
@@ -2475,7 +2478,7 @@ _______________________________________________________*/
     border-color: #ef6c00;
     background: #ef6c00;
     color: #fff;
-  } 
+  }
   /*---- Sidebar Tag CSS END -----*/
 
   /*---------Sidebar checkbox CSS Start --------*/
@@ -2504,8 +2507,8 @@ _______________________________________________________*/
             border-radius : 5px;
   }
   .thumb-detail-info { width: 200px; }
-  .sidebar-contant .thumb-box .thumb-detail-info a { 
-    color: #202833; 
+  .sidebar-contant .thumb-box .thumb-detail-info a {
+    color: #202833;
     font-size: 16px;
     font-weight: 500;
     white-space: nowrap;
@@ -2618,7 +2621,7 @@ _______________________________________________________*/
     line-height: 37px;
     font-size: 14px;
     font-weight: 500;
-    text-align: center; 
+    text-align: center;
       -webkit-border-radius: 5px;
          -moz-border-radius: 5px;
            -o-border-radius: 5px;
@@ -2686,8 +2689,8 @@ _______________________________________________________*/
     width: 100%;
   }
   .sidebar-tab .tabs-nav > ul.tab-stap > li:last-child { padding-right: 0; }
-  .sidebar-tab .tabs-nav > ul.tab-stap > li a { 
-    width: 100%; 
+  .sidebar-tab .tabs-nav > ul.tab-stap > li a {
+    width: 100%;
     position: relative;
     overflow: visible;
   }
@@ -2931,16 +2934,16 @@ _______________________________________________________*/
     -webkit-border-radius: 5px 0 0 5px;
        -moz-border-radius: 5px 0 0 5px;
          -o-border-radius: 5px 0 0 5px;
-            border-radius: 5px 0 0 5px; 
+            border-radius: 5px 0 0 5px;
   }
   .fotorama__arr--prev {
     left: 0;
     -webkit-border-radius: 0 5px 5px 0;
        -moz-border-radius: 0 5px 5px 0;
          -o-border-radius: 0 5px 5px 0;
-            border-radius: 0 5px 5px 0; 
+            border-radius: 0 5px 5px 0;
   }
-  .fotorama__arr--next:after, 
+  .fotorama__arr--next:after,
   .fotorama__arr--prev:after {
     color: #ffffff;
     font-size: 18px;
@@ -2954,7 +2957,7 @@ _______________________________________________________*/
   .fotorama__arr--prev:after { content: "\f053"; }
   .fotorama__arr--next:after { content: "\f054"; }
 
-  .fotorama__arr--prev:hover:after, 
+  .fotorama__arr--prev:hover:after,
   .fotorama__arr--next:hover:after { color: #fff; }
 
   /* -- Tour Detail Zoom Slider End -- */
@@ -3075,7 +3078,7 @@ _______________________________________________________*/
     font-family: "Font Awesome 5 Free";
   }
   .star-rating > fieldset:not(:checked) > label:before { content: '\f005 '; }
-  .star-rating > fieldset:not(:checked) > label:hover:before, 
+  .star-rating > fieldset:not(:checked) > label:hover:before,
   .star-rating > fieldset:not(:checked) > label:hover ~ label:before,
   .star-rating > fieldset > input:checked ~ label:before {
     content: '\f005 ';
@@ -3232,7 +3235,7 @@ ul.child-comment { margin-left: 63px; }
     display: inline-block;
   }
   .booking-detail .nav-tabs {
-    padding: 0; 
+    padding: 0;
     border-bottom: none;
   }
   .payment-method .nav-tabs .nav-link {
@@ -3282,8 +3285,8 @@ ul.child-comment { margin-left: 63px; }
             transform: scale(1);
   }
   /*------ Payment page Css Start ---------*/
-  .payment-method .card-body.card-bg { 
-    padding: 0; 
+  .payment-method .card-body.card-bg {
+    padding: 0;
     border-bottom: none;
   }
   /*-----------------*/
@@ -3310,7 +3313,7 @@ ul.child-comment { margin-left: 63px; }
     text-align: center;
     display: inline-block;
 }
-  /*-----------------  Masonry Gallery CSS Start  -----------------*/  
+  /*-----------------  Masonry Gallery CSS Start  -----------------*/
   .tab-bar ul {
     padding-bottom: 15px;
     border-bottom: 1px solid #e1e1e1;
@@ -3489,7 +3492,7 @@ ul.child-comment { margin-left: 63px; }
        -o-transform:scale(0,0);
           transform:scale(0,0);
 }
-.services-box:hover .services-icon:before { 
+.services-box:hover .services-icon:before {
   -webkit-transform:scale(1,1);
      -moz-transform:scale(1,1);
        -o-transform:scale(1,1);
@@ -3763,7 +3766,7 @@ ul.child-comment { margin-left: 63px; }
        -o-transition: all 0.4s ease-in-out 0s;
           transition: all 0.4s ease-in-out 0s;
 }
-.team-item:hover:after { 
+.team-item:hover:after {
   -webkit-transform: scale(1,1);
      -moz-transform: scale(1,1);
       -ms-transform: scale(1,1);
@@ -3825,7 +3828,7 @@ ul.child-comment { margin-left: 63px; }
        -o-transition: all 0.4s ease-in-out;
           transition: all 0.4s ease-in-out;
 }
-.team-item:hover .team-info .team-title { color: #fff; } 
+.team-item:hover .team-info .team-title { color: #fff; }
 .team-item:hover .team-info .sub-title,
 .team-item:hover .social_icon ul li a i { color: #fcede8; }
 .sub-title { color: #ef6c00; }
@@ -4167,7 +4170,7 @@ ul.child-comment { margin-left: 63px; }
 .main-banner.owl-carousel .owl-nav button.owl-prev { left: 20px; }
 .main-banner.owl-carousel .owl-nav button.owl-next { right: 20px; }
 
-.owl-carousel .owl-nav button.owl-next:after, 
+.owl-carousel .owl-nav button.owl-next:after,
 .owl-carousel .owl-nav button.owl-prev:after {
   color: #ef6c00;
   font-size: 18px;
@@ -4181,7 +4184,7 @@ ul.child-comment { margin-left: 63px; }
 .owl-carousel .owl-nav button.owl-prev:after { content: "\f053"; }
 .owl-carousel .owl-nav button.owl-next:after { content: "\f054"; }
 
-.owl-carousel .owl-nav button.owl-next:hover:after, 
+.owl-carousel .owl-nav button.owl-next:hover:after,
 .owl-carousel .owl-nav button.owl-prev:hover:after { color: #fff; }
 
 /*--------- Slider icon End -----------*/
@@ -4250,7 +4253,7 @@ ul.child-comment { margin-left: 63px; }
   }
   .accordion .card-header:hover:after, .accordion .card-header.collapsed:hover:after { opacity: 1; }
   .accordion .card-header {
-    display: inline-block; 
+    display: inline-block;
     border-bottom: 1px solid #e1e1e1;
     position: relative;
     color: #202833;
@@ -4304,7 +4307,7 @@ ul.child-comment { margin-left: 63px; }
       -ms-transform: translateX(-50%);
        -o-transform: translateX(-50%);
           transform: translateX(-50%);
-} 
+}
 .owl-carousel button.owl-dot > span {
   height: 12px;
   width: 12px;
@@ -4558,7 +4561,7 @@ ul.child-comment { margin-left: 63px; }
     font-size: 14px;
     line-height: 20px;
     margin: 0;
-    color: #c7bfbf; 
+    color: #c7bfbf;
   }
   .sidebar-testimonial .client-main .item .client-title { margin-bottom: 0; }
   /*---- Testimonial Common CSS End ----*/
@@ -4613,7 +4616,7 @@ ul.child-comment { margin-left: 63px; }
     vertical-align: middle;
   }
   /*-------- style-03 End-------*/
-  
+
   /* Testimonial CSS End */
 
   /*---------------------- Testimonial detail End ---------------------------- */
@@ -4761,7 +4764,7 @@ ul.child-comment { margin-left: 63px; }
   .content {
     height: 100%;
     min-height: 100%;
-  } 
+  }
   .coming-slogan {
     font-size: 22px;
     margin-bottom: 30px;
@@ -4892,8 +4895,8 @@ ul.child-comment { margin-left: 63px; }
 /*_______________________________________________________
 // FOOTER  //----------------------------
 _______________________________________________________*/
-.footer { 
-  font-size: 15px; 
+.footer {
+  font-size: 15px;
   position: relative;
   z-index: 0;
   background: #000000;
@@ -4969,8 +4972,8 @@ ul.link li a:hover:before { background: #ef6c00; }
     border: none;
     padding: 5px 10px;
 }
-.footer ul.tagcloud li a:hover { 
-  background: #ef6c00; 
+.footer ul.tagcloud li a:hover {
+  background: #ef6c00;
   color: #ffffff;
 }
 .location-box h4, .info-list h4 {

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<body onload="myFunction()">
       <!-- BANNER STRAT -->
       <section class="home-banner banner-wrapper">
         <div class="banner">
@@ -38,46 +38,44 @@
                     <a class="nav-link btn" id="hotel_tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel" aria-selected="false">Hotels</a>
                   </li>
 
-
-
                 </ul>
                 <div class="search-form-wrapper">
                   <div class="tab-content" id="tab_content">
 
                     <div class="tab-pane" id="hotel" role="tabpanel" aria-labelledby="hotel_tab">
-                      <form class="main-form" method="GET" action="/hotels">
+                      <form class="main-form" method="POST" action="/hotels">
                       {{ csrf_field() }}
                         <div class="row align-items-end justify-content-center">
                           <div class="form-group col-xl-3 col-md-6 col-12">
                             <div class="input-inner mb-3 mb-xl-0">
-                              <label>Going to ?</label>
+                              <label class="label-text">Going to ?</label>
                               <div class="input-box">
                                 <div class="input-icon">
                                   <span><i class="fas fa-map-marker-alt"></i></span>
                                 </div>
-                                <input id="hotel-destinationss" name="city_name" class="form-control" type="text" required placeholder="City">
+                                <input id="hotel-destinationss" name="city_name" class="label-text" type="text" required placeholder="City">
                               </div>
                             </div>
                           </div>
                           <div class="form-group col-xl-2 col-md-3 col-sm-6">
                             <div class="input-inner mb-3 mb-xl-0">
-                              <label>Check In</label>
+                              <label class="label-text">Check In</label>
                               <div class="input-box">
                                 <div class="input-icon">
                                   <span><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input id="hotel-start-date" class="form-control datepicker datepick" type="text" required placeholder="MM/DD/YY">
+                                <input id="hotel-start-date" name="checkindate" class="form-control datepicker datepick" type="text" required placeholder="MM/DD/YY">
                               </div>
                             </div>
                           </div>
                           <div class="form-group col-xl-2 col-md-3 col-sm-6">
                             <div class="input-inner mb-3 mb-xl-0">
-                              <label>Check Out</label>
+                              <label class="label-text">Check Out</label>
                               <div class="input-box">
                                 <div class="input-icon">
                                   <span><i class="far fa-calendar-alt"></i></span>
                                 </div>
-                                <input id="hotel-start-end" class="form-control datepicker datepick" type="text" required placeholder="MM/DD/YY">
+                                <input id="hotel-start-end" name="checkoutdate" class="form-control datepicker datepick" type="text" required placeholder="MM/DD/YY">
                               </div>
                             </div>
                           </div>
@@ -85,8 +83,8 @@
                             <div class="row">
                               <div class="col-4">
                                 <div class="input-inner mb-3 mb-md-0">
-                                  <label>Adults</label>
-                                  <select class="select" name="adults">
+                                  <label class="label-text">Rooms</label>
+                                  <select class="select" name="rooms">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -100,8 +98,9 @@
                               </div>
                               <div class="col-4">
                                 <div class="input-inner mb-3 mb-md-0">
-                                  <label>Children</label>
+                                  <label class="label-text">Adults (16+)</label>
                                   <select class="select" name="children">
+
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -115,8 +114,9 @@
                               </div>
                               <div class="col-4">
                                 <div class="input-inner mb-3 mb-md-0">
-                                  <label>Rooms</label>
-                                  <select class="select" name="Rooms">
+                                  <label class="label-text">Children</label>
+                                  <select class="select" name="children">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -133,7 +133,7 @@
                           <div class="form-group col-xl-2 col-md-4 col-sm-6 col-12">
                             <div class="search-btn">
                               <button name="search" type="submit" class="btn btn-color w-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Now
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Hotels
                               </button>
                             </div>
                           </div>
@@ -142,57 +142,185 @@
                     </div>
                     <div class="tab-pane show active" id="flights" role="tabpanel" aria-labelledby="flights_tab">
                       <div class="section-tab-2">
-                        <ul class="nav nav-tabs mb-30 mb-sm-15" id="tab2" role="tablist">
-                          <li class="nav-item">
-                            <a class="nav-link btn active" id="one_way_tab" data-toggle="tab" href="#one_way" role="tab" aria-controls="one_way" aria-selected="true"><span></span>One Way</a>
+
+                     <ul class="nav nav-tabs mb-30 mb-sm-15" id="tab2" role="tablist">
+
+                       <li class="nav-item">
+                            <a class="nav-link btn active" id="round_trip_tab" data-toggle="tab" href="#round_trip" role="tab" aria-controls="round_trip" aria-selected="false"><span></span>Round Trip</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link btn" id="round_trip_tab" data-toggle="tab" href="#round_trip" role="tab" aria-controls="round_trip" aria-selected="false"><span></span>Round Trip</a>
-                          </li>
+                            <a class="nav-link btn" id="one_way_tab" data-toggle="tab" href="#one_way" role="tab" aria-controls="one_way" aria-selected="true"><span></span>One Way</a>
+
+
                           <li class="nav-item">
                             <a class="nav-link btn" id="multi_city_tab" data-toggle="tab" href="#multi_city" role="tab" aria-controls="multi_city" aria-selected="false"><span></span>Multi City</a>
                           </li>
                         </ul>
+
                         <div class="tab-content" id="tab_content2">
-                          <div class="tab-pane fade show active" id="one_way" role="tabpanel" aria-labelledby="one_way_tab">
-                            <form class="main-form" action="flight-list.html">
+                          <div class="tab-pane fade" id="one_way" role="tabpanel" aria-labelledby="one_way_tab">
+                            <form class="main-form" method="POST" action="/flights">
+                              {{ csrf_field() }}
                               <div class="row align-items-end justify-content-center">
                                 <div class="form-group col-lg-4 col-md-4 col-sm-6">
                                   <div class="input-inner mb-3">
-                                    <label>From</label>
+                                    <label class="label-text">From</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="from-one-way" class="form-control" type="text" required placeholder="From">
+                                      <input id="autocomplete" name="from1" class="label-text" type="text" required placeholder="From">
+                                    </div>
+                                  </div>
+                                </div>
+                                <script>
+                                  var options = {
+  shouldSort: true,
+  threshold: 0.4,
+  maxPatternLength: 32,
+  keys: [{
+    name: 'iata',
+    weight: 0.5
+  }, {
+    name: 'name',
+    weight: 0.3
+  }, {
+    name: 'city',
+    weight: 0.2
+  }]
+};
+
+var fuse = new Fuse(airports, options)
+
+
+var ac = $('#autocomplete')
+  .on('click', function(e) {
+    e.stopPropagation();
+  })
+  .on('focus keyup', search)
+  .on('keydown', onKeyDown);
+
+var wrap = $('<div>')
+  .addClass('autocomplete-wrapper')
+  .insertBefore(ac)
+  .append(ac);
+
+var list = $('<div>')
+  .addClass('autocomplete-results')
+  .on('click', '.autocomplete-result', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    selectIndex($(this).data('index'));
+  })
+  .appendTo(wrap);
+
+$(document)
+  .on('mouseover', '.autocomplete-result', function(e) {
+    var index = parseInt($(this).data('index'), 10);
+    if (!isNaN(index)) {
+      list.attr('data-highlight', index);
+    }
+  })
+  .on('click', clearResults);
+
+function clearResults() {
+  results = [];
+  numResults = 0;
+  list.empty();
+}
+
+function selectIndex(index) {
+  if (results.length >= index + 1) {
+    ac.val(results[index].iata);
+    clearResults();
+  }
+}
+
+var results = [];
+var numResults = 0;
+var selectedIndex = -1;
+
+function search(e) {
+  if (e.which === 38 || e.which === 13 || e.which === 40) {
+    return;
+  }
+
+  if (ac.val().length > 0) {
+    results = _.take(fuse.search(ac.val()), 7);
+    numResults = results.length;
+
+    var divs = results.map(function(r, i) {
+        return '<div class="autocomplete-result" data-index="'+ i +'">'
+             + '<div><b>'+ r.iata +'</b> - '+ r.name +'</div>'
+             + '<div class="autocomplete-location">'+ r.city +', '+ r.country +'</div>'
+             + '</div>';
+     });
+
+    selectedIndex = -1;
+    list.html(divs.join(''))
+      .attr('data-highlight', selectedIndex);
+
+  } else {
+    numResults = 0;
+    list.empty();
+  }
+}
+
+function onKeyDown(e) {
+  switch(e.which) {
+    case 38: // up
+      selectedIndex--;
+      if (selectedIndex <= -1) {
+        selectedIndex = -1;
+      }
+      list.attr('data-highlight', selectedIndex);
+      break;
+    case 13: // enter
+      selectIndex(selectedIndex);
+      break;
+    case 9: // enter
+      selectIndex(selectedIndex);
+      e.stopPropagation();
+      return;
+    case 40: // down
+      selectedIndex++;
+      if (selectedIndex >= numResults) {
+        selectedIndex = numResults-1;
+      }
+      list.attr('data-highlight', selectedIndex);
+      break;
+
+    default: return; // exit this handler for other keys
+  }
+  e.stopPropagation();
+  e.preventDefault(); // prevent the default action (scroll / move caret)
+}
+                                </script>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-6">
+                                  <div class="input-inner mb-3">
+                                    <label class="label-text">To</label>
+                                    <div class="input-box">
+                                      <div class="input-icon">
+                                        <span><i class="fas fa-map-marker-alt"></i></span>
+                                      </div>
+                                      <input id="to-one-way" name="to1" class="label-text" type="text" required placeholder="To">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-sm-6">
                                   <div class="input-inner mb-3">
-                                    <label>To</label>
-                                    <div class="input-box">
-                                      <div class="input-icon">
-                                        <span><i class="fas fa-map-marker-alt"></i></span>
-                                      </div>
-                                      <input id="to-one-way" class="form-control" type="text" required placeholder="To">
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="form-group col-lg-4 col-md-4 col-sm-6">
-                                  <div class="input-inner mb-3">
-                                    <label>Depart Date</label>
+                                    <label class="label-text">Depart Date</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="far fa-calendar-alt"></i></span>
                                       </div>
-                                      <input id="one-way-date" class="form-control datepicker datepick" type="text" required placeholder="MM/DD/YY">
+                                      <input id="one-way-date" name="DepartureDate1" class="label-text datepicker datepick" type="text" required placeholder="MM/DD/YY">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-4 col-sm-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Class of travel</label>
+                                    <label class="label-text">Cabin class</label>
                                     <select class="select" name="Coach">
                                       <option value="ec">Economy</option>
                                       <option value="bu">Business</option>
@@ -203,8 +331,8 @@
                                 </div>
                                 <div class="form-group col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Adults</label>
-                                    <select class="select" name="adults">
+                                    <label class="label-text">Adults</label>
+                                    <select class="select" name="Adults">
                                       <option value="1">1</option>
                                       <option value="2">2</option>
                                       <option value="3">3</option>
@@ -218,8 +346,9 @@
                                 </div>
                                 <div class="form-group col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Children</label>
+                                    <label class="label-text">Children</label>
                                     <select class="select" name="children">
+                                      <option value="1">0</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
                                       <option value="3">3</option>
@@ -234,63 +363,68 @@
                                 <div class="form-group col-lg-3 col-md-4 col-sm-6 col-12">
                                   <div class="search-btn mt-lg-0 mt-md-3 mt-sm-0">
                                     <button name="search" type="submit" class="btn btn-color w-100">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Now
+                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Flight
                                     </button>
                                   </div>
                                 </div>
                               </div>
                             </form>
                           </div>
-                          <div class="tab-pane fade" id="round_trip" role="tabpanel" aria-labelledby="round_trip_tab">
-                            <form class="main-form" method="GET" action="flights">
+                          <div class="tab-pane fade show active" id="round_trip" role="tabpanel" aria-labelledby="round_trip_tab">
+                            <form class="main-form" method="POST" action="/flights">
+                               {{ csrf_field() }}
                               <div class="row align-items-end justify-content-center">
                                 <div class="form-group col-lg-4 col-sm-6 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>From</label>
+                                    <label class="label-text">From</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="from-round-trip" class="form-control" type="text" required placeholder="From">
+                                      <input id="from-round-trip" name="from1" class="label-text" type="text" required placeholder="From">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-sm-6 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>To</label>
+                                    <label class="label-text">To</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="to-round-trip" class="form-control" type="text" required placeholder="To">
+                                      <input id="to-round-trip" name="to1" class="label-text" type="text" required placeholder="To">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6">
                                   <div class="input-inner mb-3">
-                                    <label>Depart & Return Date</label>
+                                    <label class="label-text">Depart & Return Date</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="far fa-calendar-alt"></i></span>
                                       </div>
-                                      <input id="round-trip-date" type="text" name="daterange"  required placeholder="MM/DD/YY">
+                                      <input id="round-trip-date" class="label-text datepicker datepick" type="text" name="DepartureDate1"  required placeholder="MM/DD/YY">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-3 col-md-6 col-sm-6">
                                   <div class="input-inner mb-3 mb-lg-0">
-                                    <label>Class of travel</label>
-                                    <select class="select" name="Coach">
-                                      <option value="ec">Economy</option>
-                                      <option value="bu">Business</option>
-                                      <option value="fr">First Class</option>
-                                      <option value="pe">Premium Economy</option>
+                                    <label class="label-text">Class of travel</label>
+                                    <select class="select" name="flightClass">
+                                      <option value="economy">Economy</option>
+                                      <option value="business">Business</option>
+                                      <option value="first">First Class</option>
+
                                     </select>
                                   </div>
                                 </div>
-                                <div class="form-group col-lg-3 col-md-4 col-6">
+
+
+
+
+                                <div id="myDIV2" class="form-group col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Adults</label>
+                                    <label class="label-text">Adults</label>
                                     <select class="select" name="adults">
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -303,10 +437,11 @@
                                     </select>
                                   </div>
                                 </div>
-                                <div class="form-group col-lg-3 col-md-4 col-6">
+                                <div id="myDIV" class="form-group col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Children</label>
+                                    <label class="label-text">Children</label>
                                     <select class="select" name="children">
+                                      <option value="0">0</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
                                       <option value="3">3</option>
@@ -318,10 +453,11 @@
                                     </select>
                                   </div>
                                 </div>
+
                                 <div class="form-group col-lg-3 col-md-4 col-sm-6 col-12">
                                   <div class="search-btn">
                                     <button name="search" type="submit" class="btn btn-color w-100">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Now
+                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Flight
                                     </button>
                                   </div>
                                 </div>
@@ -333,29 +469,29 @@
                               <div class="row align-items-end justify-content-center">
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>From</label>
+                                    <label class="label-text">From</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="from-multi-city" class="form-control" type="text" required placeholder="From">
+                                      <input id="from-multi-city" class="label-text" type="text" required placeholder="From">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>To</label>
+                                    <label class="label-text">To</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="to-multi-city" class="form-control" type="text" required placeholder="To">
+                                      <input id="to-multi-city" class="label-text" type="text" required placeholder="To">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>Depart Date</label>
+                                    <label class="label-text">Depart Date</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="far fa-calendar-alt"></i></span>
@@ -366,29 +502,29 @@
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>From</label>
+                                    <label class="label-text">From</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="from-multi-city2" class="form-control" type="text" required placeholder="From">
+                                      <input id="from-multi-city2" class="label-text" type="text" required placeholder="From">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>To</label>
+                                    <label class="label-text">To</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="fas fa-map-marker-alt"></i></span>
                                       </div>
-                                      <input id="to-multi-city2" class="form-control" type="text" required placeholder="To">
+                                      <input id="to-multi-city2" class="label-text" type="text" required placeholder="To">
                                     </div>
                                   </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-4 col-12">
                                   <div class="input-inner mb-3">
-                                    <label>Depart Date</label>
+                                    <label class="label-text">Depart Date</label>
                                     <div class="input-box">
                                       <div class="input-icon">
                                         <span><i class="far fa-calendar-alt"></i></span>
@@ -399,7 +535,7 @@
                                 </div>
                                 <div class="form-group col-xl-3 col-lg-3 col-md-4 col-12">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Class of travel</label>
+                                    <label class="label-text">Class of travel</label>
                                     <select class="select" name="Coach">
                                       <option value="ec">Economy</option>
                                       <option value="bu">Business</option>
@@ -410,7 +546,7 @@
                                 </div>
                                 <div class="form-group col-xl-3 col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Adults</label>
+                                    <label class="label-text">Adults</label>
                                     <select class="select" name="adults">
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -425,7 +561,7 @@
                                 </div>
                                 <div class="form-group col-xl-3 col-lg-3 col-md-4 col-6">
                                   <div class="input-inner mb-3 mb-md-0">
-                                    <label>Children</label>
+                                    <label class="label-text">Children</label>
                                     <select class="select" name="children">
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -441,7 +577,7 @@
                                 <div class="form-group col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                   <div class="search-btn mt-lg-0 mt-md-3 mt-sm-0">
                                     <button name="search" type="submit" class="btn btn-color w-100">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Now
+                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17"><path d="M11.35 1.94a6.67 6.67 0 0 0-9.41 0 6.67 6.67 0 0 0 0 9.41c2.31 2.31 5.91 2.56 8.5.75.05.26.18.5.38.7l3.78 3.78c.55.55 1.44.55 1.99 0s.55-1.44 0-1.99l-3.78-3.78c-.2-.2-.45-.33-.7-.38 1.8-2.58 1.55-6.17-.76-8.49zm-1.19 8.22c-1.94 1.94-5.09 1.94-7.02 0a4.98 4.98 0 0 1 0-7.02c1.94-1.94 5.09-1.94 7.02 0s1.94 5.08 0 7.02z" fill-rule="evenodd" fill="#fff"/></svg> Search Flight
                                     </button>
                                   </div>
                                 </div>
@@ -773,9 +909,25 @@
       <!-- counter End -->
 
 
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  var y = document.getElementById("myDIV2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  if (y.style.display === "none") {
+    y.style.display = "block";
+  } else {
+    y.style.display = "none";
+  }
+}
+</script>
 
 
       <!-- CONTAINER END -->
 
-
+</body>
 @endsection

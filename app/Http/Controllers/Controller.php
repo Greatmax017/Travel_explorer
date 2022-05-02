@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -27,17 +28,13 @@ class Controller extends BaseController
         [ 'headers' =>
         [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTA3MDM0NDksIm5iZiI6MTY1MDY4NTQ0OX0.bQgFhrcTbrNYoi8M4J5H1XgJ1w0cEf4slce3RBR-VYA'
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTE1MTM2MjMsIm5iZiI6MTY1MTQ5NTYyM30.f5E6U17OzLekglzOqlmvkGM63rdTxdKoP8p2yqxhPVY'
 
         ],
 
             'query' => [
-            'clientname' => 'Travel Explorer Limited',
-            'CheckInDate' => '2022-06-29',
-            'CheckOutDate' => '2022-06-30',
-            'RoomCount' => '1',
-            'PlaceId' => 'ChIJEcHIDqKw2YgRZU-t3XHylv8',
-            'Adults' => '3'
+            'clientname' => 'Travel Explorer Limited'
+
              ]
              ]
     );
@@ -49,29 +46,30 @@ class Controller extends BaseController
         return view('hotels', ['hotels' => $hotels]);
     }
 
-    public function fetch_air(){
+    public function fetch_air(Request $request){
+
         $client = new Client();
         $r = $client->get('http://rest.resvoyage.com/api/v1/air/search',
         [ 'headers' =>
         [
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTA3MDM0NDksIm5iZiI6MTY1MDY4NTQ0OX0.bQgFhrcTbrNYoi8M4J5H1XgJ1w0cEf4slce3RBR-VYA'
+            'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTE1MTM2MjMsIm5iZiI6MTY1MTQ5NTYyM30.f5E6U17OzLekglzOqlmvkGM63rdTxdKoP8p2yqxhPVY'
 
         ],
 
             'query' => [
-            'from1' => 'LOS',
-            'to1' => 'LON',
-            'DepartureDate1' => '2022-04-22',
-            'Adults' => '1'
+            'from1' => $request->from1,
+            'to1' => $request->to1,
+            'DepartureDate1' => $request->DepartureDate1,
+            'Adults' => $request->adults
              ]
              ]
     );
 
         $response = $r->getBody()->getContents();
-    //    dd($response);
+        // dd($response);
         $flights = json_decode($response);
-       //  dd($flights->PricedItineraries);
+        dd($flights->PricedItineraries);
         return view('flights', ['flights' => $flights]);
     }
     public function hotel_details(){
@@ -80,7 +78,7 @@ class Controller extends BaseController
     //     [ 'headers' =>
     //     [
     //         'Content-Type' => 'application/json',
-    //         'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTA3MDM0NDksIm5iZiI6MTY1MDY4NTQ0OX0.bQgFhrcTbrNYoi8M4J5H1XgJ1w0cEf4slce3RBR-VYA'
+    //         'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlRyYXZlbCBFeHBsb3JlciBMaW1pdGVkIiwiQ2xpZW50SWQiOiIzNTU5Iiwicm9sZSI6IkIyQyIsIlRyYXZlbEdyb3VwSWQiOiIzNzI0IiwiaXNzIjoiaHR0cDovL3Jlc3ZveWFnZS5jb20iLCJhdWQiOiJyZXN2b3lhZ2UiLCJleHAiOjE2NTE1MTM2MjMsIm5iZiI6MTY1MTQ5NTYyM30.f5E6U17OzLekglzOqlmvkGM63rdTxdKoP8p2yqxhPVY'
 
     //     ],
 

@@ -1,0 +1,191 @@
+<div class="form-group">
+    <label class="control-label">Enter an Airport</label>
+    <input id="autocomplete" type="text" />
+</div>
+
+<div class="form-group">
+    <label class="control-label">Another field (so we can test TAB behavior)</label>
+    <input type="text" />
+</div>
+
+<style>body {
+  margin: 50px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.control-label {
+  display: block;
+}
+
+.autocomplete-wrapper {
+  position: relative;
+
+  input {
+    width: 100%;
+  }
+}
+.autocomplete-results {
+  position: absolute;
+  background: white;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  font-size: 13px;
+  border: solid 1px #ddd;
+  border-top-width: 0;
+  border-bottom-color: #ccc;
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.autocomplete-result {
+  padding: 12px 15px;
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.autocomplete-result:last-child {
+  border-bottom-width: 0;
+}
+
+.autocomplete-location {
+  opacity: .8;
+  font-size: smaller;
+}
+
+$iPlus: 0;
+@for $i from 0 through 7 {
+  $iPlus: $i + 1;
+  .autocomplete-results[data-highlight='#{$i}'] > :nth-child(#{$iPlus}) {
+    color: white;
+    background: #26C9FF;
+    border-bottom-color: #26C9FF;
+    outline: solid 1px darken(#26C9FF, 10%);
+  }
+}</style>
+
+<script>
+    var options = {
+            shouldSort: true,
+            threshold: 0.4,
+            maxPatternLength: 32,
+            keys: [{
+                name: 'iata',
+                weight: 0.5
+            }, {
+                name: 'name',
+                weight: 0.3
+            }, {
+                name: 'city',
+                weight: 0.2
+            }]
+        };
+
+        var fuse = new Fuse(airports, options)
+
+
+        var ac = $('#autocomplete')
+            .on('click', function (e) {
+                e.stopPropagation();
+            })
+            .on('focus keyup', search)
+            .on('keydown', onKeyDown);
+
+        var wrap = $('<div>')
+            .addClass('autocomplete-wrapper')
+            .insertBefore(ac)
+            .append(ac);
+
+        var list = $('<div>')
+            .addClass('autocomplete-results')
+            .on('click', '.autocomplete-result', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                selectIndex($(this).data('index'));
+            })
+            .appendTo(wrap);
+
+        $(document)
+            .on('mouseover', '.autocomplete-result', function (e) {
+                var index = parseInt($(this).data('index'), 10);
+                if (!isNaN(index)) {
+                    list.attr('data-highlight', index);
+                }
+            })
+            .on('click', clearResults);
+
+        function clearResults() {
+            results = [];
+            numResults = 0;
+            list.empty();
+        }
+
+        function selectIndex(index) {
+            if (results.length >= index + 1) {
+                ac.val(results[index].iata);
+                clearResults();
+            }
+        }
+
+        var results = [];
+        var numResults = 0;
+        var selectedIndex = -1;
+
+        function search(e) {
+            if (e.which === 38 || e.which === 13 || e.which === 40) {
+                return;
+            }
+
+            if (ac.val().length > 0) {
+                results = _.take(fuse.search(ac.val()), 7);
+                numResults = results.length;
+
+                var divs = results.map(function (r, i) {
+                    return '<div class="autocomplete-result" data-index="' + i + '">'
+                        + '<div><b>' + r.iata + '</b> - ' + r.name + '</div>'
+                        + '<div class="autocomplete-location">' + r.city + ', ' + r.country + '</div>'
+                        + '</div>';
+                });
+
+                selectedIndex = -1;
+                list.html(divs.join(''))
+                    .attr('data-highlight', selectedIndex);
+
+            } else {
+                numResults = 0;
+                list.empty();
+            }
+        }
+
+        function onKeyDown(e) {
+            switch (e.which) {
+                case 38: // up
+                    selectedIndex--;
+                    if (selectedIndex <= -1) {
+                        selectedIndex = -1;
+                    }
+                    list.attr('data-highlight', selectedIndex);
+                    break;
+                case 13: // enter
+                    selectIndex(selectedIndex);
+                    break;
+                case 9: // enter
+                    selectIndex(selectedIndex);
+                    e.stopPropagation();
+                    return;
+                case 40: // down
+                    selectedIndex++;
+                    if (selectedIndex >= numResults) {
+                        selectedIndex = numResults - 1;
+                    }
+                    list.attr('data-highlight', selectedIndex);
+                    break;
+
+                default: return; // exit this handler for other keys
+            }
+            e.stopPropagation();
+            e.preventDefault(); // prevent the default action (scroll / move caret)
+        }
+</script>
