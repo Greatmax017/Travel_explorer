@@ -10,7 +10,7 @@ Booking API connection has been made and locked in
 
 
 #payment api
-Flutterwave payment gateway has been integrated and will be tested at the appropirate stage
+Flutterwave payment gateway has been integrated 
 
 
-This readme will continue to be updated for every stage until completion
+
